@@ -12,7 +12,7 @@ servers:
     proxy: false # Nginx (existant, tremic.fr/wiseprod) gère le routing par sous-domaine + SSL
     options:
       publish:
-        - "3001:3000"
+        - "127.0.0.1:3001:80"
   # job:
   #   hosts:
   #     - 192.168.0.1
