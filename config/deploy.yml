@@ -7,16 +7,22 @@ image: tremic/next_app
 # Deploy to these servers.
 servers:
   web:
-    hosts:
-      - 147.79.114.207
-    proxy: false # Nginx (existant, tremic.fr/wiseprod) gère le routing par sous-domaine + SSL
-    options:
-      publish:
-        - "127.0.0.1:3001:80"
+    - 147.79.114.207
   # job:
   #   hosts:
   #     - 192.168.0.1
   #   cmd: bin/jobs
+
+# kamal-proxy écoute en local sur 8080 ; Nginx (existant) gère le SSL et le routing par sous-domaine.
+proxy:
+  host: next.tremic.fr
+  ssl: false
+  app_port: 80
+  run:
+    http_port: 8080
+    https_port: 8443
+    bind_ips:
+      - 127.0.0.1
 
 # Enable SSL auto certification via Let's Encrypt and allow for multiple apps on a single web server.
 # If used with Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
