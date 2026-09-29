@@ -7,10 +7,12 @@ image: tremic/next_app
 # Deploy to these servers.
 servers:
   web:
-    - 147.79.114.207
+    hosts:
+      - 147.79.114.207
+    proxy: false # Nginx (existant, tremic.fr/wiseprod) gère le routing par sous-domaine + SSL
     options:
       publish:
-      - "3001:3000"
+        - "3001:3000"
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -26,7 +28,7 @@ servers:
 # proxy:
 #   ssl: true
 #   host: app.example.com
-proxy: false # Nginx (existant, tremic.fr/wiseprod) gère le routing par sous-domaine + SSL
+
 # Where you keep your container images.
 registry:
   # Alternatives: hub.docker.com / registry.digitalocean.com / ghcr.io / ...
@@ -40,10 +42,6 @@ registry:
   #   - KAMAL_REGISTRY_PASSWORD
 
 # Inject ENV variables into containers (secrets come from .kamal/secrets).
-
-username: tremic
-password:
-  - KAMAL_REGISTRY_PASSWORD
 env:
   secret:
     - RAILS_MASTER_KEY
