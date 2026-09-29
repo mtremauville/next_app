@@ -13,6 +13,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-
+  post "guest_login", to: "guest_sessions#create", as: :guest_login
   root "pages#home"
 end
