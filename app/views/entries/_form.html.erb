@@ -1,0 +1,26 @@
+<%= form_with model: entry, class: "nerv-panel" do |f| %>
+  <% if entry.errors.any? %>
+    <div class="nerv-errors">
+      <% entry.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= f.label :title, "Titre" %>
+  <%= f.text_field :title %>
+
+  <%= f.label :status, "Statut" %>
+  <%= f.select :status, status_options %>
+
+  <%= f.label :platform, "Plateforme" %>
+  <%= f.text_field :platform %>
+
+  <%= f.label :rating, "Note (1 à 5)" %>
+  <%= f.select :rating, (1..5).to_a, include_blank: true %>
+
+  <div class="nerv-actions">
+    <%= f.submit "[ Enregistrer ]" %>
+    <%= link_to "[ Annuler ]", entries_path %>
+  </div>
+<% end %>
