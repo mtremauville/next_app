@@ -31,13 +31,27 @@
 
       Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
     -->
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <%= button_to "[ Se déconnecter ]", destroy_user_session_path, method: :delete %>
-    <% end %>
-    <%= yield %>
+    <header class="nerv-header">
+      <span class="nerv-logo">NEXT</span>
+      <% if user_signed_in? %>
+        <nav>
+          <%= link_to "[ Ma liste ]", entries_path %>
+          <%= link_to "[ Nouveau titre ]", new_entry_path %>
+          <%= button_to "[ Déconnexion ]", destroy_user_session_path, method: :delete, class: "nerv-link-button" %>
+        </nav>
+      <% end %>
+    </header>
+
+    <main class="nerv-main">
+      <% if notice %><p class="nerv-flash"><%= notice %></p><% end %>
+      <% if alert %><p class="nerv-flash nerv-flash--alert"><%= alert %></p><% end %>
+      <%= yield %>
+    </main>
   </body>
 </html>
