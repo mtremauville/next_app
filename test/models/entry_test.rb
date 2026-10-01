@@ -23,4 +23,14 @@ class EntryTest < ActiveSupport::TestCase
   test "allows a blank rating" do
     assert Entry.new(title: "Dune", user: users(:one), rating: nil).valid?
   end
+
+  test "can belong to a playlist of the same user" do
+    entry = Entry.new(title: "Dune", user: users(:one), playlist: playlists(:sunday_movies))
+    assert entry.valid?
+  end
+
+  test "rejects a playlist owned by another user" do
+    entry = Entry.new(title: "Dune", user: users(:one), playlist: playlists(:other_user_list))
+    assert_not entry.valid?
+  end
 end

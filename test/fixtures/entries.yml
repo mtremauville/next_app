@@ -4,6 +4,7 @@ inception:
   rating: 5
   platform: Netflix
   user: one
+  playlist: sunday_movies
 
 severance:
   title: Severance
