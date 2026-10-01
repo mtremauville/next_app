@@ -1,0 +1,17 @@
+inception:
+  title: Inception
+  status: 2
+  rating: 5
+  platform: Netflix
+  user: one
+  playlist: sunday_movies
+
+severance:
+  title: Severance
+  status: 1
+  user: one
+
+other_entry:
+  title: Titre privé
+  status: 0
+  user: two

@@ -13,4 +13,11 @@ class GuestSessionsControllerTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_response :success
   end
+
+  test "signed in user can sign out and reach the sign in page" do
+    post guest_login_url
+    delete destroy_user_session_url
+    get new_user_session_url
+    assert_response :success
+  end
 end

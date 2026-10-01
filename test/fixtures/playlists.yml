@@ -1,0 +1,7 @@
+sunday_movies:
+  name: Films du dimanche
+  user: one
+
+other_user_list:
+  name: Liste de l'autre
+  user: two

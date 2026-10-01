@@ -1,0 +1,24 @@
+<h1>Ma liste</h1>
+
+<% if @entries.empty? %>
+  <p>Aucun titre pour l'instant. <%= link_to "[ Ajouter le premier ]", new_entry_path %></p>
+<% else %>
+  <div class="nerv-grid">
+    <% @entries.each do |entry| %>
+      <article class="nerv-panel">
+        <h2><%= entry.title %></h2>
+        <p class="status-<%= entry.status %>">
+          <span class="nerv-led"></span><%= status_label(entry.status) %>
+        </p>
+        <% if entry.platform.present? %><p>Plateforme : <%= entry.platform %></p><% end %>
+        <% if entry.rating %><p>Note : <%= entry.rating %>/5</p><% end %>
+        <div class="nerv-actions">
+          <%= link_to "[ Modifier ]", edit_entry_path(entry) %>
+          <%= button_to "[ Supprimer ]", entry_path(entry), method: :delete,
+                class: "nerv-link-button",
+                form: { data: { turbo_confirm: "Supprimer ce titre ?" } } %>
+        </div>
+      </article>
+    <% end %>
+  </div>
+<% end %>

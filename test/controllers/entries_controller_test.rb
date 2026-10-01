@@ -1,0 +1,52 @@
+require "test_helper"
+
+class EntriesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
+  setup { sign_in users(:one) }
+
+  test "index lists only my entries" do
+    get entries_path
+    assert_response :success
+    assert_select "h2", text: "Inception"
+    assert_select "h2", text: "Titre privé", count: 0
+  end
+
+  test "create adds an entry for the current user" do
+    assert_difference -> { users(:one).entries.count }, 1 do
+      post entries_path, params: { entry: { title: "Dune", status: "to_watch" } }
+    end
+    assert_redirected_to entries_path
+  end
+
+  test "create with a blank title re-renders the form" do
+    assert_no_difference "Entry.count" do
+      post entries_path, params: { entry: { title: "", status: "to_watch" } }
+    end
+    assert_response :unprocessable_entity
+  end
+
+  test "update changes my entry" do
+    patch entry_path(entries(:severance)), params: { entry: { status: "watched" } }
+    assert_redirected_to entries_path
+    assert entries(:severance).reload.watched?
+  end
+
+  test "destroy removes my entry" do
+    assert_difference "Entry.count", -1 do
+      delete entry_path(entries(:severance))
+    end
+    assert_redirected_to entries_path
+  end
+
+  test "cannot edit another user's entry" do
+    get edit_entry_path(entries(:other_entry))
+    assert_response :not_found
+  end
+
+  test "redirects to sign in when signed out" do
+    sign_out :user
+    get entries_path
+    assert_redirected_to new_user_session_path
+  end
+end
