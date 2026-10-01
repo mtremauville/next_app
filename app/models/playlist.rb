@@ -1,0 +1,6 @@
+class Playlist < ApplicationRecord
+  belongs_to :user
+  has_many :entries, dependent: :nullify
+
+  validates :name, presence: true, uniqueness: { scope: :user_id }
+end

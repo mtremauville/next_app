@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_01_074528) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_01_080450) do
   create_table "entries", force: :cascade do |t|
     t.string "title", null: false
     t.integer "status", default: 0, null: false
@@ -19,7 +19,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_01_074528) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "playlist_id"
+    t.index ["playlist_id"], name: "index_entries_on_playlist_id"
     t.index ["user_id"], name: "index_entries_on_user_id"
+  end
+
+  create_table "playlists", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_playlists_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,5 +44,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_01_074528) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "entries", "playlists"
   add_foreign_key "entries", "users"
+  add_foreign_key "playlists", "users"
 end
