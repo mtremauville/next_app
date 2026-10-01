@@ -1,0 +1,11 @@
+inception:
+  title: Inception
+  status: 2
+  rating: 5
+  platform: Netflix
+  user: one
+
+severance:
+  title: Severance
+  status: 1
+  user: one
