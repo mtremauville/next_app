@@ -41,6 +41,6 @@ class EntriesController < ApplicationController
   end
 
   def entry_params
-    params.expect(entry: %i[title status rating platform])
+    params.expect(entry: %i[title status rating platform playlist_id])
   end
 end
