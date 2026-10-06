@@ -101,3 +101,16 @@ input[type="text"], select {
 .status-watched { color: var(--green); }
 
 .nerv-actions { display: flex; gap: 0.75rem; margin-top: 1rem; align-items: center; }
+
+
+.nerv-modal {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  color: var(--text);
+  width: calc(100% - 2rem);
+  max-width: 420px;
+  overflow: visible; /* sinon les coins en équerre sont coupés */
+}
+.nerv-modal::backdrop { background: rgba(0, 0, 0, 0.85); }
+.nerv-danger { color: var(--amber); border-color: var(--amber); }
