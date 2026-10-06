@@ -9,9 +9,7 @@
 
   <%= f.label :name, "Nom" %>
   <%= f.text_field :name %>
-  <%= f.label :playlist_id, "Playlist" %>
-  <%= f.collection_select :playlist_id, current_user.playlists.order(:name), :id, :name,
-        include_blank: "Aucune" %>
+
   <div class="nerv-actions">
     <%= f.submit "[ Enregistrer ]" %>
     <%= link_to "[ Annuler ]", playlists_path %>
