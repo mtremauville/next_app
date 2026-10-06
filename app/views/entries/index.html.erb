@@ -11,6 +11,7 @@
           <span class="nerv-led"></span><%= status_label(entry.status) %>
         </p>
         <% if entry.platform.present? %><p>Plateforme : <%= entry.platform %></p><% end %>
+        <% if entry.playlist %><p>Playlist : <%= entry.playlist.name %></p><% end %>
         <% if entry.rating %><p>Note : <%= entry.rating %>/5</p><% end %>
         <div class="nerv-actions">
           <%= link_to "[ Modifier ]", edit_entry_path(entry) %>

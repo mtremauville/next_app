@@ -18,7 +18,9 @@
 
   <%= f.label :rating, "Note (1 à 5)" %>
   <%= f.select :rating, (1..5).to_a, include_blank: true %>
-
+  <%= f.label :playlist_id, "Playlist" %>
+  <%= f.collection_select :playlist_id, current_user.playlists.order(:name), :id, :name,
+      include_blank: "Aucune" %>
   <div class="nerv-actions">
     <%= f.submit "[ Enregistrer ]" %>
     <%= link_to "[ Annuler ]", entries_path %>

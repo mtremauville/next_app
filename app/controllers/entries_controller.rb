@@ -2,7 +2,7 @@ class EntriesController < ApplicationController
   before_action :set_entry, only: %i[edit update destroy]
 
   def index
-    @entries = current_user.entries.order(created_at: :desc)
+    @entries = current_user.entries.includes(:playlist).order(created_at: :desc)
   end
 
   def new
@@ -41,6 +41,6 @@ class EntriesController < ApplicationController
   end
 
   def entry_params
-    params.expect(entry: %i[title status rating platform])
+    params.expect(entry: %i[title status rating platform playlist_id])
   end
 end
