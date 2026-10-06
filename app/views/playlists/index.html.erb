@@ -21,9 +21,10 @@
         <% end %>
         <div class="nerv-actions">
           <%= link_to "[ Renommer ]", edit_playlist_path(playlist) %>
-          <%= button_to "[ Supprimer ]", playlist_path(playlist), method: :delete,
-                class: "nerv-link-button",
-                form: { data: { turbo_confirm: "Supprimer cette playlist ? Les titres seront conservés." } } %>
+          <%= render "shared/confirm_delete",
+                title: "Supprimer la playlist ?",
+                message: "« #{playlist.name} » sera supprimée. Les titres seront conservés.",
+                path: playlist_path(playlist) %>
         </div>
       </article>
     <% end %>

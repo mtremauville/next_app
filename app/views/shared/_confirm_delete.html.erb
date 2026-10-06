@@ -1,0 +1,15 @@
+<div data-controller="confirm-modal">
+  <button type="button" class="nerv-link-button" data-action="confirm-modal#open">[ Supprimer ]</button>
+
+  <dialog class="nerv-modal" data-confirm-modal-target="dialog"
+          data-action="click->confirm-modal#closeOnBackdrop">
+    <div class="nerv-panel">
+      <h2><%= title %></h2>
+      <p><%= message %></p>
+      <div class="nerv-actions">
+        <%= button_to "[ Confirmer ]", path, method: :delete, class: "nerv-danger" %>
+        <button type="button" data-action="confirm-modal#close">[ Annuler ]</button>
+      </div>
+    </div>
+  </dialog>
+</div>
