@@ -5,3 +5,7 @@ sunday_movies:
 other_user_list:
   name: Liste de l'autre
   user: two
+
+empty_list:
+  name: Liste vide
+  user: one

@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   # root "posts#index"
   post "guest_login", to: "guest_sessions#create", as: :guest_login
   resources :entries, except: :show
+  resources :playlists, except: :show
   root "pages#home"
 end

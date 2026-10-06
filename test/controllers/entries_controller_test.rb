@@ -49,4 +49,11 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
     get entries_path
     assert_redirected_to new_user_session_path
   end
+
+  test "cannot assign an entry to another user's playlist" do
+    patch entry_path(entries(:severance)),
+          params: { entry: { playlist_id: playlists(:other_user_list).id } }
+    assert_response :unprocessable_entity
+    assert_nil entries(:severance).reload.playlist_id
+  end
 end

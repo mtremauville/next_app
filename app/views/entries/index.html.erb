@@ -11,12 +11,14 @@
           <span class="nerv-led"></span><%= status_label(entry.status) %>
         </p>
         <% if entry.platform.present? %><p>Plateforme : <%= entry.platform %></p><% end %>
+        <% if entry.playlist %><p>Playlist : <%= entry.playlist.name %></p><% end %>
         <% if entry.rating %><p>Note : <%= entry.rating %>/5</p><% end %>
         <div class="nerv-actions">
           <%= link_to "[ Modifier ]", edit_entry_path(entry) %>
-          <%= button_to "[ Supprimer ]", entry_path(entry), method: :delete,
-                class: "nerv-link-button",
-                form: { data: { turbo_confirm: "Supprimer ce titre ?" } } %>
+          <%= render "shared/confirm_delete",
+                title: "Supprimer le titre ?",
+                message: "« #{entry.title} » sera supprimé de ta liste.",
+                path: entry_path(entry) %>
         </div>
       </article>
     <% end %>

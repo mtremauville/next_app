@@ -1,0 +1,32 @@
+<h1>Playlists</h1>
+
+<p><%= link_to "[ Nouvelle playlist ]", new_playlist_path %></p>
+
+<% if @playlists.empty? %>
+  <p>Aucune playlist pour l'instant. Crée-en une pour organiser tes titres.</p>
+<% else %>
+  <div class="nerv-grid">
+    <% @playlists.each do |playlist| %>
+      <article class="nerv-panel">
+        <h2><%= playlist.name %></h2>
+        <p><%= pluralize(playlist.entries.size, "titre") %></p>
+        <% if playlist.entries.any? %>
+          <ul>
+            <% playlist.entries.each do |entry| %>
+              <li class="status-<%= entry.status %>">
+                <span class="nerv-led"></span><%= entry.title %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+        <div class="nerv-actions">
+          <%= link_to "[ Renommer ]", edit_playlist_path(playlist) %>
+          <%= render "shared/confirm_delete",
+                title: "Supprimer la playlist ?",
+                message: "« #{playlist.name} » sera supprimée. Les titres seront conservés.",
+                path: playlist_path(playlist) %>
+        </div>
+      </article>
+    <% end %>
+  </div>
+<% end %>
