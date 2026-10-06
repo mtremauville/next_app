@@ -2,7 +2,7 @@ class EntriesController < ApplicationController
   before_action :set_entry, only: %i[edit update destroy]
 
   def index
-    @entries = current_user.entries.order(created_at: :desc)
+    @entries = current_user.entries.includes(:playlist).order(created_at: :desc)
   end
 
   def new

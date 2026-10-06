@@ -1,0 +1,19 @@
+<%= form_with model: playlist, class: "nerv-panel" do |f| %>
+  <% if playlist.errors.any? %>
+    <div class="nerv-errors">
+      <% playlist.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= f.label :name, "Nom" %>
+  <%= f.text_field :name %>
+  <%= f.label :playlist_id, "Playlist" %>
+  <%= f.collection_select :playlist_id, current_user.playlists.order(:name), :id, :name,
+        include_blank: "Aucune" %>
+  <div class="nerv-actions">
+    <%= f.submit "[ Enregistrer ]" %>
+    <%= link_to "[ Annuler ]", playlists_path %>
+  </div>
+<% end %>
