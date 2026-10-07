@@ -8,6 +8,8 @@ class Entry < ApplicationRecord
   validates :status, presence: true
   validates :rating, numericality: { only_integer: true, in: 1..5 }, allow_nil: true
   validate :playlist_belongs_to_same_user
+  validates :media_type, inclusion: { in: %w[movie tv] }, allow_blank: true
+  validates :poster_path, format: { with: %r{\A/[\w\-.]+\z} }, allow_blank: true
 
   private
 

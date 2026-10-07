@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_01_080450) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_07_155504) do
   create_table "entries", force: :cascade do |t|
     t.string "title", null: false
     t.integer "status", default: 0, null: false
@@ -20,6 +20,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_01_080450) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "playlist_id"
+    t.integer "tmdb_id"
+    t.string "media_type"
+    t.string "poster_path"
+    t.string "year"
+    t.text "overview"
     t.index ["playlist_id"], name: "index_entries_on_playlist_id"
     t.index ["user_id"], name: "index_entries_on_user_id"
   end

@@ -6,7 +6,8 @@
   <div class="nerv-grid">
     <% @entries.each do |entry| %>
       <article class="nerv-panel">
-        <h2><%= entry.title %></h2>
+        <%= poster_tag(entry) %>
+        <h2><%= entry.title %><% if entry.year.present? %> <small>(<%= entry.year %>)</small><% end %></h2>
         <p class="status-<%= entry.status %>">
           <span class="nerv-led"></span><%= status_label(entry.status) %>
         </p>
