@@ -33,4 +33,12 @@ class EntryTest < ActiveSupport::TestCase
     entry = Entry.new(title: "Dune", user: users(:one), playlist: playlists(:other_user_list))
     assert_not entry.valid?
   end
+  test "accepts a valid TMDB poster path" do
+    assert Entry.new(title: "Dune", user: users(:one), poster_path: "/abc.jpg").valid?
+  end
+
+  test "rejects a poster path pointing elsewhere" do
+    entry = Entry.new(title: "Dune", user: users(:one), poster_path: "https://evil.example/x.jpg")
+    assert_not entry.valid?
+  end
 end

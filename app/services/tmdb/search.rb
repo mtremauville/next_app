@@ -2,8 +2,7 @@ module Tmdb
   class Search
     IMAGE_BASE = "https://image.tmdb.org/t/p/w185".freeze
 
-    Result = Struct.new(:tmdb_id, :title, :media_type, :year, :poster_url, :overview, keyword_init: true)
-
+    Result = Struct.new(:tmdb_id, :title, :media_type, :year, :poster_path, :poster_url, :overview, keyword_init: true)
     def initialize(client: Client.new)
       @client = client
     end
@@ -29,6 +28,7 @@ module Tmdb
         title: item["title"].presence || item["name"],
         media_type: item["media_type"],
         year: date&.slice(0, 4),
+        poster_path: item["poster_path"],
         poster_url: item["poster_path"] && "#{IMAGE_BASE}#{item['poster_path']}",
         overview: item["overview"]
       )

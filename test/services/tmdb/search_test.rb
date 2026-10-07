@@ -30,6 +30,7 @@ class Tmdb::SearchTest < ActiveSupport::TestCase
     assert_equal "https://image.tmdb.org/t/p/w185/abc.jpg", results.first.poster_url
     assert_equal "Severance", results.last.title
     assert_nil results.last.poster_url
+    assert_equal "/abc.jpg", results.first.poster_path
   end
 
   test "returns an empty list for a query shorter than 2 characters" do
