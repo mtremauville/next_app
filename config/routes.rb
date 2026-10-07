@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   post "guest_login", to: "guest_sessions#create", as: :guest_login
   resources :entries, except: :show
   resources :playlists, except: :show
+  get "tmdb/search", to: "tmdb_searches#index", as: :tmdb_search
   root "pages#home"
 end
