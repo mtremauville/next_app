@@ -41,7 +41,7 @@ class EntriesControllerTest < ActionDispatch::IntegrationTest
 
   test "cannot edit another user's entry" do
     get edit_entry_path(entries(:other_entry))
-    assert_response :not_found
+    assert_redirected_to root_path
   end
 
   test "redirects to sign in when signed out" do

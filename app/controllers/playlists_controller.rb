@@ -2,15 +2,17 @@ class PlaylistsController < ApplicationController
   before_action :set_playlist, only: %i[edit update destroy]
 
   def index
-    @playlists = current_user.playlists.includes(:entries).order(:name)
+    @playlists = policy_scope(Playlist).includes(:entries).order(:name)
   end
 
   def new
     @playlist = current_user.playlists.build
+    authorize @playlist
   end
 
   def create
     @playlist = current_user.playlists.build(playlist_params)
+    authorize @playlist
 
     if @playlist.save
       redirect_to playlists_path, notice: "Playlist créée."
@@ -37,7 +39,8 @@ class PlaylistsController < ApplicationController
   private
 
   def set_playlist
-    @playlist = current_user.playlists.find(params[:id])
+    @playlist = Playlist.find(params[:id])
+    authorize @playlist
   end
 
   def playlist_params

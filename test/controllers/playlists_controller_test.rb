@@ -42,7 +42,7 @@ class PlaylistsControllerTest < ActionDispatch::IntegrationTest
 
   test "cannot edit another user's playlist" do
     get edit_playlist_path(playlists(:other_user_list))
-    assert_response :not_found
+    assert_redirected_to root_path
   end
 
   test "redirects to sign in when signed out" do
