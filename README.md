@@ -6,8 +6,6 @@ A movie and TV watchlist: statuses, ratings, playlists, episode-by-episode progr
 
 **[Live demo: next.tremic.fr](https://next.tremic.fr)** · click "Try without an account", no sign-up
 
-🇫🇷 [Lire en français](README.md)
-
 | Home | My list |
 | --- | --- |
 | ![Home](docs/screenshots/home.png) | ![My list](docs/screenshots/list.png) |
