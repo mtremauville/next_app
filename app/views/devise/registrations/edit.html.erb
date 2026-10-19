@@ -10,9 +10,9 @@
 
       <%= f.label :password do %>
         <%= t("account.new_password") %> <span class="nerv-hint"><%= t("account.keep_password") %></span>
-        <% if @minimum_password_length %><span class="nerv-hint"><%= t("account.password_hint", count: @minimum_password_length) %></span><% end %>
       <% end %>
-      <%= f.password_field :password, autocomplete: "new-password" %>
+      <%= f.password_field :password, autocomplete: "new-password", aria: { describedby: "password-rules" } %>
+      <%= render "shared/password_rules" %>
 
       <%= f.label :password_confirmation, t("account.password_confirmation") %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
@@ -30,8 +30,12 @@
 
     <h2 class="nerv-section"><%= t("account.cancel_title") %></h2>
     <p><%= t("account.cancel_text") %></p>
-    <%= button_to "[ #{t("account.cancel_button")} ]", registration_path(resource_name),
-          method: :delete, class: "nerv-danger",
-          form: { data: { turbo_confirm: t("account.cancel_confirm") } } %>
+    <%= render "shared/confirm_delete",
+          title: t("account.cancel_confirm_title"),
+          message: t("account.cancel_confirm"),
+          path: registration_path(:user),
+          trigger: t("account.cancel_button"),
+          confirm: t("account.cancel_button"),
+          trigger_class: "nerv-danger" %>
   </div>
 </section>

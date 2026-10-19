@@ -3,7 +3,7 @@ require "test_helper"
 class GuestSessionsControllerTest < ActionDispatch::IntegrationTest
   setup do
     User.find_or_create_by!(email: User::GUEST_EMAIL) do |user|
-      user.password = "password123"
+      user.password = "Passw0rd!2026"
     end
   end
 

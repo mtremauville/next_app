@@ -22,6 +22,23 @@ en:
     cancel_text: "Your titles, your playlists and your progress will be permanently deleted."
     cancel_button: "Delete my account"
     cancel_confirm: "Permanently delete your account and all your data?"
+    cancel_confirm_title: "Delete your account?"
     errors_title: "The form contains errors:"
+    password_rules_title: "Your password must contain:"
+    password_rule:
+      length: "at least 8 characters"
+      lowercase: "a lowercase letter"
+      uppercase: "an uppercase letter"
+      digit: "a digit"
+      special: "a special character (for example ! ? @ # -)"
 
-    
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              password_lowercase: "must contain a lowercase letter"
+              password_uppercase: "must contain an uppercase letter"
+              password_digit: "must contain a digit"
+              password_special: "must contain a special character (for example ! ? @ # -)"

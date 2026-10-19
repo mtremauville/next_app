@@ -22,5 +22,23 @@ fr:
     cancel_text: "Tes titres, tes playlists et ta progression seront supprimés définitivement."
     cancel_button: "Supprimer mon compte"
     cancel_confirm: "Supprimer définitivement ton compte et toutes tes données ?"
+    cancel_confirm_title: "Supprimer ton compte ?"
+
     errors_title: "Le formulaire contient des erreurs :"
-    
+    password_rules_title: "Ton mot de passe doit contenir :"
+    password_rule:
+      length: "8 caractères au minimum"
+      lowercase: "une minuscule"
+      uppercase: "une majuscule"
+      digit: "un chiffre"
+      special: "un caractère spécial (par exemple ! ? @ # -)"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              password_lowercase: "doit contenir une minuscule"
+              password_uppercase: "doit contenir une majuscule"
+              password_digit: "doit contenir un chiffre"
+              password_special: "doit contenir un caractère spécial (par exemple ! ? @ # -)"
