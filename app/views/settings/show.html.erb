@@ -1,0 +1,38 @@
+<h1><%= t("settings.title") %></h1>
+
+<section class="nerv-panel nerv-section">
+  <h2><%= t("settings.language.title") %></h2>
+  <p class="nerv-hint"><%= t(current_user.guest? ? "settings.language.hint_guest" : "settings.language.hint") %></p>
+
+  <nav class="nerv-locale nerv-locale--settings" aria-label="<%= t("locale.label") %>">
+    <% I18n.available_locales.each do |locale| %>
+      <%= button_to t("locale.names.#{locale}"), settings_path,
+            method: :patch, params: { locale: locale },
+            class: "nerv-locale-button", lang: locale,
+            form: { data: { turbo: "false" } },
+            aria: { pressed: (locale == I18n.locale) } %>
+    <% end %>
+  </nav>
+</section>
+
+<% unless current_user.guest? %>
+  <section class="nerv-panel nerv-section">
+    <h2><%= t("settings.account.title") %></h2>
+    <p><%= current_user.email %></p>
+    <p>
+      <%= link_to "[ #{t("settings.account.edit")} ]", edit_user_registration_path %>
+    </p>
+  </section>
+
+  <section class="nerv-panel nerv-section nerv-danger-zone">
+    <h2><%= t("settings.delete.title") %></h2>
+    <p><%= t("settings.delete.text") %></p>
+    <%= render "shared/confirm_delete",
+          title: t("settings.delete.confirm_title"),
+          message: t("settings.delete.confirm_message"),
+          path: registration_path(:user),
+          trigger: t("settings.delete.button"),
+          confirm: t("settings.delete.button"),
+          trigger_class: "nerv-danger" %>
+  </section>
+<% end %>

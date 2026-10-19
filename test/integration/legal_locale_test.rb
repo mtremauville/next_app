@@ -95,20 +95,6 @@ class LegalLocaleTest < ActionDispatch::IntegrationTest
     assert_select "label", text: /Current password/
   end
 
-  test "the account link is hidden from the demo account" do
-    User.find_or_create_by!(email: User::GUEST_EMAIL) { |user| user.password = "password123" }
-    post guest_login_url
-    get root_path
-
-    assert_select "nav#side-menu a[href=?]", edit_user_registration_path, count: 0
-  end
-
-  test "a regular user sees the account link" do
-    sign_in users(:one)
-    get root_path
-
-    assert_select "nav#side-menu a[href=?]", edit_user_registration_path
-  end
   test "there is no forgotten password link, since no email can be sent" do
     get new_user_session_path
 
@@ -118,5 +104,13 @@ class LegalLocaleTest < ActionDispatch::IntegrationTest
     get new_user_session_path
 
     assert_select "a", text: /Forgot your password/, count: 0
+  end
+  test "the privacy policy mentions the saved language in both languages" do
+    get privacy_path
+    assert_select "li", text: /ta langue préférée/
+
+    patch change_locale_path, params: { locale: "en" }
+    get privacy_path
+    assert_select "li", text: /your preferred language/
   end
 end

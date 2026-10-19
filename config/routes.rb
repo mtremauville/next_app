@@ -47,5 +47,6 @@ Rails.application.routes.draw do
   get "conditions-generales", to: "legal#terms", as: :terms
   get "confidentialite", to: "legal#privacy", as: :privacy
   patch "locale", to: "locales#update", as: :change_locale
+  resource :settings, only: %i[show update]
   root "pages#home"
 end

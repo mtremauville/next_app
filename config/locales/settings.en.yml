@@ -1,0 +1,24 @@
+en:
+  nav:
+    settings: "Settings"
+
+  flash:
+    settings:
+      language_saved: "Language saved."
+      unknown_language: "Unknown language."
+
+  settings:
+    title: "Settings"
+    language:
+      title: "Language"
+      hint: "Saved on your account: it follows you on every device."
+      hint_guest: "The demo account is shared: your choice only applies to this browser."
+    account:
+      title: "Account"
+      edit: "Change my email or my password"
+    delete:
+      title: "Delete my account"
+      text: "Your titles, your playlists and your progress will be permanently deleted."
+      button: "Delete my account"
+      confirm_title: "Delete your account?"
+      confirm_message: "This cannot be undone: your account and all your data will be erased."
