@@ -17,7 +17,7 @@ class DemoResetJobTest < ActiveJob::TestCase
   end
 
   setup do
-    @guest = User.find_or_create_by!(email: User::GUEST_EMAIL) { |user| user.password = "password123" }
+    @guest = User.find_or_create_by!(email: User::GUEST_EMAIL) { |user| user.password = "Passw0rd!2026" }
     @guest.entries.destroy_all
     @guest.playlists.destroy_all
   end

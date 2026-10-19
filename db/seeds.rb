@@ -8,5 +8,5 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 User.find_or_create_by!(email: User::GUEST_EMAIL) do |user|
-  user.password = SecureRandom.hex(16)
+  user.password = "#{SecureRandom.hex(16)}Aa1!"
 end
