@@ -58,6 +58,7 @@ fr:
           <li><strong>Compte</strong> : adresse email et mot de passe (stocké sous forme chiffrée, jamais en clair).</li>
           <li><strong>Contenu que tu saisis</strong> : titres, statuts, notes, plateformes, playlists, progression des épisodes et positions de reprise.</li>
           <li><strong>Données techniques</strong> : adresse IP, date et page demandée, enregistrées dans les journaux du serveur.</li>
+          <li><strong>Préférences</strong> : ta langue préférée, si tu la choisis dans les réglages.</li>
         </ul>
       s3_title: "3. Finalités et bases légales"
       s3_body_html: |-

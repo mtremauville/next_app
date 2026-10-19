@@ -1,0 +1,24 @@
+fr:
+  nav:
+    settings: "Réglages"
+
+  flash:
+    settings:
+      language_saved: "Langue enregistrée."
+      unknown_language: "Langue inconnue."
+
+  settings:
+    title: "Réglages"
+    language:
+      title: "Langue"
+      hint: "Enregistrée sur ton compte : elle te suit sur tous tes appareils."
+      hint_guest: "Le compte de démonstration est partagé : ton choix ne vaut que pour ce navigateur."
+    account:
+      title: "Compte"
+      edit: "Modifier mon email ou mon mot de passe"
+    delete:
+      title: "Supprimer mon compte"
+      text: "Tes titres, tes playlists et ta progression seront supprimés définitivement."
+      button: "Supprimer mon compte"
+      confirm_title: "Supprimer ton compte ?"
+      confirm_message: "Cette action est définitive : ton compte et toutes tes données seront effacés."
