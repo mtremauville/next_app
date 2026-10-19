@@ -96,18 +96,18 @@ class LegalLocaleTest < ActionDispatch::IntegrationTest
   end
 
   test "the account link is hidden from the demo account" do
-    User.find_or_create_by!(email: User::GUEST_EMAIL) { |user| user.password = "password123" }
+    User.find_or_create_by!(email: User::GUEST_EMAIL) { |user| user.password = "Passw0rd!2026" }
     post guest_login_url
     get root_path
 
-    assert_select "nav#main-nav a[href=?]", edit_user_registration_path, count: 0
+    assert_select "nav#side-menu a[href=?]", edit_user_registration_path, count: 0
   end
 
   test "a regular user sees the account link" do
     sign_in users(:one)
     get root_path
 
-    assert_select "nav#main-nav a[href=?]", edit_user_registration_path
+    assert_select "nav#side-menu a[href=?]", edit_user_registration_path
   end
   test "there is no forgotten password link, since no email can be sent" do
     get new_user_session_path

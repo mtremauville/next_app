@@ -1,8 +1,10 @@
 require "test_helper"
 
 class LocaleTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
-    User.find_or_create_by!(email: User::GUEST_EMAIL) { |user| user.password = "password123" }
+    User.find_or_create_by!(email: User::GUEST_EMAIL) { |user| user.password = "Passw0rd!2026" }
   end
 
   test "the app is in French by default" do
@@ -81,6 +83,18 @@ class LocaleTest < ActionDispatch::IntegrationTest
     get entries_path
 
     assert_select "footer a", text: "Terms of use"
-    assert_select "nav#main-nav a", text: "[ My list ]"
+    assert_select "nav#side-menu a", text: "[ My list ]"
+  end
+  test "the footer no longer offers the language switch, but the sign-in page does" do
+    get new_user_session_path
+
+    assert_select "footer .nerv-locale", count: 0
+    assert_select ".nerv-hero .nerv-locale button[lang=fr]"
+    assert_select ".nerv-hero .nerv-locale button[lang=en]"
+
+    sign_in users(:one)
+    get entries_path
+
+    assert_select "footer .nerv-locale", count: 0
   end
 end

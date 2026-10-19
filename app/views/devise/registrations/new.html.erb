@@ -8,11 +8,9 @@
       <%= f.label :email, t("auth.email") %>
       <%= f.email_field :email, autocomplete: "email" %>
 
-      <%= f.label :password do %>
-        <%= t("auth.password") %>
-        <% if @minimum_password_length %><span class="nerv-hint"><%= t("account.password_hint", count: @minimum_password_length) %></span><% end %>
-      <% end %>
-      <%= f.password_field :password, autocomplete: "new-password" %>
+      <%= f.label :password, t("auth.password") %>
+      <%= f.password_field :password, autocomplete: "new-password", aria: { describedby: "password-rules" } %>
+      <%= render "shared/password_rules" %>
 
       <%= f.label :password_confirmation, t("account.password_confirmation") %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
