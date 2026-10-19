@@ -58,6 +58,7 @@ en:
           <li><strong>Account</strong>: email address and password (stored encrypted, never in clear text).</li>
           <li><strong>Content you enter</strong>: titles, statuses, ratings, platforms, playlists, episode progress and resume positions.</li>
           <li><strong>Technical data</strong>: IP address, date and requested page, recorded in the server logs.</li>
+          <li><strong>Preferences</strong>: your preferred language, if you choose one in the settings.</li>
         </ul>
       s3_title: "3. Purposes and legal bases"
       s3_body_html: |-

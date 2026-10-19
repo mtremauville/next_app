@@ -79,9 +79,7 @@
             </div>
 
             <div class="nerv-side-foot">
-              <% unless current_user.guest? %>
-                <%= side_link(:account, edit_user_registration_path, %r{\A/users/edit}) %>
-              <% end %>
+              <%= side_link(:settings, settings_path, %r{\A/(settings|users/edit)}) %>
               <%= render "shared/confirm_delete",
                   title: t("sign_out.title"),
                   message: t("sign_out.message"),
