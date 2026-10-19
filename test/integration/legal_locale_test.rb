@@ -96,7 +96,7 @@ class LegalLocaleTest < ActionDispatch::IntegrationTest
   end
 
   test "the account link is hidden from the demo account" do
-    User.find_or_create_by!(email: User::GUEST_EMAIL) { |user| user.password = "password123" }
+    User.find_or_create_by!(email: User::GUEST_EMAIL) { |user| user.password = "Passw0rd!2026" }
     post guest_login_url
     get root_path
 

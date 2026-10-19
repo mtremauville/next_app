@@ -4,7 +4,7 @@ class LocaleTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    User.find_or_create_by!(email: User::GUEST_EMAIL) { |user| user.password = "password123" }
+    User.find_or_create_by!(email: User::GUEST_EMAIL) { |user| user.password = "Passw0rd!2026" }
   end
 
   test "the app is in French by default" do

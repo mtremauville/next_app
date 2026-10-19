@@ -30,7 +30,7 @@ class ListsLocaleTest < ActionDispatch::IntegrationTest
 
   test "the home page of an empty account is in English" do
     english!
-    User.find_or_create_by!(email: User::GUEST_EMAIL) { |user| user.password = "password123" }
+    User.find_or_create_by!(email: User::GUEST_EMAIL) { |user| user.password = "Passw0rd!2026" }
     post guest_login_url
     get root_path
 
