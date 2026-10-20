@@ -702,3 +702,12 @@ label .nerv-hint { margin-left: 0.4rem; }
 .nerv-locale--settings { margin-top: 0.75rem; }
 .nerv-danger-zone { border-color: var(--amber); }
 .nerv-danger-zone h2 { color: var(--amber); }
+
+.nerv-moods { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1rem 0 1.5rem; }
+.nerv-mood { display: flex; flex-direction: column; gap: 0.3rem; padding: 1rem; color: var(--text); }
+.nerv-mood:hover,
+.nerv-mood.is-active { border-color: var(--orange); }
+.nerv-mood.is-active .nerv-mood-name { color: var(--orange); }
+.nerv-mood-emoji { font-size: 1.8rem; line-height: 1; }
+.nerv-mood-name { font-family: "Oswald", sans-serif; text-transform: uppercase; letter-spacing: 0.1em; }
+.nerv-mood-hint { font-size: 0.8rem; color: var(--muted); }
