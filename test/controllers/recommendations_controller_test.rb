@@ -120,4 +120,10 @@ class RecommendationsControllerTest < ActionDispatch::IntegrationTest
     assert_select "nav#side-menu a[href=?]", recommendations_path
     assert_select "nav#side-menu a.is-active", text: "[ Que regarder ? ]"
   end
+  test "the mood cards use icons, not emojis" do
+    visit recommendations_path
+
+    assert_select "a.nerv-mood .nerv-mood-icon i.fa-solid", 4
+    assert_no_match(/[\u{1F300}-\u{1FAFF}]/, response.body)
+  end
 end
