@@ -21,6 +21,10 @@ class Entry < ApplicationRecord
     genres.to_s.split(",").map(&:strip).reject(&:blank?)
   end
 
+  def genre_id_list
+    genre_ids.to_s.split(",").filter_map { |value| Integer(value, 10, exception: false) }
+  end
+
   def tv? = media_type == "tv"
 
   def episodes_watched
