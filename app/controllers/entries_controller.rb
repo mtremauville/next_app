@@ -61,5 +61,6 @@ class EntriesController < ApplicationController
 
     entry.runtime_minutes = details.runtime_minutes
     entry.genres = details.genres
+    entry.genre_ids = details.genre_ids.join(",")
   end
 end

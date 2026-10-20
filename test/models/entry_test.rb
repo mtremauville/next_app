@@ -97,4 +97,9 @@ class EntryTest < ActiveSupport::TestCase
 
     assert_equal latest, entry.reload.resume_point
   end
+  test "genre ids are read back as integers" do
+    assert_equal [ 878, 28 ], Entry.new(genre_ids: "878,28").genre_id_list
+    assert_equal [], Entry.new.genre_id_list
+    assert_equal [ 28 ], Entry.new(genre_ids: "28,abc,").genre_id_list
+  end
 end

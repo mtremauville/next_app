@@ -13,7 +13,7 @@ module Tmdb
     Person = Struct.new(:name, :role, :photo_path, keyword_init: true)
     Season = Struct.new(:number, :name, :episode_count, :year, keyword_init: true)
     Result = Struct.new(:tmdb_id, :media_type, :title, :tagline, :year, :poster_path, :overview,
-                        :genres, :runtime_minutes, :rating, :cast, :crew, :creators, :seasons,
+                        :genres, :genre_ids, :runtime_minutes, :rating, :cast, :crew, :creators, :seasons,
                         keyword_init: true)
 
     def initialize(client: Client.new)
@@ -44,6 +44,7 @@ module Tmdb
         poster_path: data["poster_path"],
         overview: data["overview"].presence,
         genres: data.fetch("genres", []).filter_map { |genre| genre["name"] },
+        genre_ids: data.fetch("genres", []).filter_map { |genre| genre["id"] },
         runtime_minutes: runtime_for(data, media_type),
         rating: rating.positive? ? rating.round(1) : nil,
         cast: cast_from(credits),
@@ -90,7 +91,7 @@ module Tmdb
         Season.new(
           number: number,
           name: season["name"].presence || I18n.t("series.fallback_season", number: number),
-          episode_count: season["episode_count"],
+                    episode_count: season["episode_count"],
           year: season["air_date"]&.slice(0, 4)
         )
       end
