@@ -13,7 +13,7 @@ class CatalogEntriesControllerTest < ActionDispatch::IntegrationTest
   def dune
     Tmdb::TitleDetails::Result.new(
       tmdb_id: 438631, media_type: "movie", title: "Dune", year: "2021", poster_path: "/dune.jpg",
-      overview: "Sur Arrakis", genres: [ "Science-Fiction" ], runtime_minutes: 155
+      overview: "Sur Arrakis", genres: [ "Science-Fiction" ], genre_ids: [ 878 ], runtime_minutes: 155
     )
   end
 

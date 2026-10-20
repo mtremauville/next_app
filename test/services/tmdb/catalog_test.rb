@@ -56,4 +56,18 @@ class Tmdb::CatalogTest < ActiveSupport::TestCase
   test "rejects an unknown media type" do
     assert_raises(ArgumentError) { Tmdb::Catalog.new(client: FakeClient.new({})).popular("person") }
   end
+  test "discover sends the filters to the discover endpoint" do
+    client = FakeClient.new({ "results" => [] })
+    Tmdb::Catalog.new(client: client).discover("tv", { with_genres: "35|10751", "vote_average.gte": 6.5 }, page: 3)
+
+    path, params = client.calls.first
+    assert_equal "/discover/tv", path
+    assert_equal "35|10751", params[:with_genres]
+    assert_equal 6.5, params[:"vote_average.gte"]
+    assert_equal 3, params[:page]
+  end
+
+  test "discover refuses an unknown media type" do
+    assert_raises(ArgumentError) { Tmdb::Catalog.new(client: FakeClient.new({})).discover("person") }
+  end
 end

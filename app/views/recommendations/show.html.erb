@@ -1,0 +1,57 @@
+<h1><%= t("mood.title") %></h1>
+<p class="nerv-hint"><%= t("mood.intro") %></p>
+
+<nav class="nerv-tabs" aria-label="<%= t("mood.type_label") %>">
+  <% %w[all movie tv].each do |type| %>
+    <%= link_to "[ #{t("mood.types.#{type}")} ]",
+          recommendations_path(mood: @mood, type: (type unless type == "all")),
+          class: ("is-active" if @type == type),
+          aria: { current: ("true" if @type == type) } %>
+  <% end %>
+</nav>
+
+<div class="nerv-moods">
+  <% Recommendations::Moods::KEYS.each do |mood| %>
+    <%= link_to recommendations_path(mood: mood, type: (@type unless @type == "all")),
+          class: "nerv-mood nerv-panel #{"is-active" if @mood == mood}",
+          aria: { current: ("true" if @mood == mood) } do %>
+      <span class="nerv-mood-icon"><%= mood_icon(mood) %></span>
+      <span class="nerv-mood-name"><%= t("mood.names.#{mood}") %></span>
+      <span class="nerv-mood-hint"><%= t("mood.hints.#{mood}") %></span>
+    <% end %>
+  <% end %>
+</div>
+
+<% if @picks %>
+  <section class="nerv-section">
+    <h2><%= t("mood.in_list.title") %></h2>
+
+    <% if @picks.in_list.empty? %>
+      <p class="nerv-hint"><%= t("mood.in_list.empty") %></p>
+    <% else %>
+      <div class="nerv-gallery">
+        <%= render partial: "recommendations/entry", collection: @picks.in_list, as: :entry %>
+      </div>
+    <% end %>
+  </section>
+
+  <section class="nerv-section">
+    <h2><%= t("mood.discover.title") %></h2>
+
+    <% if @picks.unavailable %>
+      <p class="nerv-flash nerv-flash--alert"><%= t("mood.discover.unavailable") %></p>
+    <% elsif @picks.discover.empty? %>
+      <p class="nerv-hint"><%= t("mood.discover.empty") %></p>
+    <% else %>
+      <div data-controller="add-to-playlist">
+        <div class="nerv-gallery">
+          <%= render partial: "catalog/item", collection: @picks.discover, as: :item %>
+        </div>
+
+        <%= render "catalog/playlist_modal", playlists: @playlists %>
+      </div>
+    <% end %>
+  </section>
+
+  <p><%= link_to "[ #{t("mood.again")} ]", recommendations_path(mood: @mood, type: (@type unless @type == "all")) %></p>
+<% end %>

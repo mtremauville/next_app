@@ -1,6 +1,6 @@
 module Tmdb
   class Details
-    Result = Struct.new(:runtime_minutes, :genres, keyword_init: true)
+    Result = Struct.new(:runtime_minutes, :genres, :genre_ids, keyword_init: true)
 
     def initialize(client: Client.new)
       @client = client
@@ -9,11 +9,13 @@ module Tmdb
     def call(tmdb_id, media_type)
       return unless tmdb_id.present? && %w[movie tv].include?(media_type)
 
-      data = @client.get("/#{media_type}/#{tmdb_id}", language: "fr-FR")
+      data = @client.get("/#{media_type}/#{tmdb_id}")
+      genres = data.fetch("genres", [])
 
       Result.new(
         runtime_minutes: runtime_for(data, media_type),
-        genres: data.fetch("genres", []).filter_map { |g| g["name"] }.join(",")
+        genres: genres.filter_map { |genre| genre["name"] }.join(","),
+        genre_ids: genres.filter_map { |genre| genre["id"] }
       )
     rescue Tmdb::Error
       nil

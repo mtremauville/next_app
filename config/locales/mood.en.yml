@@ -1,0 +1,30 @@
+en:
+  nav:
+    mood: "What to watch?"
+
+  mood:
+    title: "What to watch?"
+    intro: "Pick your mood of the day: ideas from your list, and discoveries."
+    type_label: "Type of title"
+    again: "More ideas"
+    types:
+      all: "All"
+      movie: "Movies"
+      tv: "Series"
+    names:
+      nostalgic: "Nostalgic"
+      feel_good: "Feel good"
+      fight: "Fired up"
+      calm: "Unwind"
+    hints:
+      nostalgic: "Classics, and what you loved"
+      feel_good: "Light, funny, comforting"
+      fight: "Action, tension, adrenaline"
+      calm: "Gentle and short, no stress"
+    in_list:
+      title: "In your list"
+      empty: "Nothing in your list fits this mood yet."
+    discover:
+      title: "To discover"
+      empty: "No new idea for this mood. Try another type or another mood."
+      unavailable: "Suggestions are unavailable right now. Try again in a moment."

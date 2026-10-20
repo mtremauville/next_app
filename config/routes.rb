@@ -48,5 +48,6 @@ Rails.application.routes.draw do
   get "confidentialite", to: "legal#privacy", as: :privacy
   patch "locale", to: "locales#update", as: :change_locale
   resource :settings, only: %i[show update]
+  get "recommendations", to: "recommendations#show", as: :recommendations
   root "pages#home"
 end

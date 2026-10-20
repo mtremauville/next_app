@@ -90,4 +90,10 @@ class Tmdb::TitleDetailsTest < ActiveSupport::TestCase
 
     assert_equal "Season 2", title.seasons.first.name
   end
+  test "exposes the genre ids of a title" do
+    payload = { "id" => 1, "title" => "X", "genres" => [ { "id" => 18, "name" => "Drame" }, { "name" => "Sans id" } ] }
+    title = Tmdb::TitleDetails.new(client: FakeClient.new(payload)).call("movie", 1)
+
+    assert_equal [ 18 ], title.genre_ids
+  end
 end

@@ -1,0 +1,30 @@
+fr:
+  nav:
+    mood: "Que regarder ?"
+
+  mood:
+    title: "Que regarder ?"
+    intro: "Choisis ton humeur du jour : des idées dans ta liste, et des découvertes."
+    type_label: "Type de titre"
+    again: "Autres idées"
+    types:
+      all: "Tous"
+      movie: "Films"
+      tv: "Séries"
+    names:
+      nostalgic: "Nostalgique"
+      feel_good: "Feel good"
+      fight: "Envie d'en découdre"
+      calm: "Anti-stress"
+    hints:
+      nostalgic: "Des classiques, et ce que tu as adoré"
+      feel_good: "Léger, drôle, réconfortant"
+      fight: "Action, tension, adrénaline"
+      calm: "Doux et court, sans stress"
+    in_list:
+      title: "Dans ta liste"
+      empty: "Rien dans ta liste ne correspond à cette humeur pour l'instant."
+    discover:
+      title: "À découvrir"
+      empty: "Aucune idée nouvelle pour cette humeur. Essaie un autre type ou une autre humeur."
+      unavailable: "Les suggestions sont momentanément indisponibles. Réessaie dans un instant."

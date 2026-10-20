@@ -17,6 +17,7 @@ module Tmdb
         overview: title.overview,
         runtime_minutes: title.runtime_minutes,
         genres: title.genres.join(","),
+        genre_ids: Array(title.genre_ids).join(",").presence,
         episodes_total: (total if media_type == "tv" && total.positive?)
       )
     end
