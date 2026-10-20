@@ -15,7 +15,7 @@
     <%= link_to recommendations_path(mood: mood, type: (@type unless @type == "all")),
           class: "nerv-mood nerv-panel #{"is-active" if @mood == mood}",
           aria: { current: ("true" if @mood == mood) } do %>
-      <span class="nerv-mood-emoji" aria-hidden="true"><%= mood_emoji(mood) %></span>
+      <span class="nerv-mood-icon"><%= mood_icon(mood) %></span>
       <span class="nerv-mood-name"><%= t("mood.names.#{mood}") %></span>
       <span class="nerv-mood-hint"><%= t("mood.hints.#{mood}") %></span>
     <% end %>

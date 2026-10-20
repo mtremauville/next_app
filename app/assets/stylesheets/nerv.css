@@ -708,6 +708,6 @@ label .nerv-hint { margin-left: 0.4rem; }
 .nerv-mood:hover,
 .nerv-mood.is-active { border-color: var(--orange); }
 .nerv-mood.is-active .nerv-mood-name { color: var(--orange); }
-.nerv-mood-emoji { font-size: 1.8rem; line-height: 1; }
+.nerv-mood-icon { font-size: 1.6rem; line-height: 1; color: var(--orange); }
 .nerv-mood-name { font-family: "Oswald", sans-serif; text-transform: uppercase; letter-spacing: 0.1em; }
 .nerv-mood-hint { font-size: 0.8rem; color: var(--muted); }
