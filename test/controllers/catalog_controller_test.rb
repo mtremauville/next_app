@@ -60,4 +60,14 @@ class CatalogControllerTest < ActionDispatch::IntegrationTest
 
     assert_select "select#playlist_id option", text: "Liste de l'autre", count: 0
   end
+  test "the add button is an icon and keeps an accessible name" do
+    sign_in users(:one)
+    Tmdb::Catalog.stub :new, fake_catalog do
+      get catalog_path
+    end
+
+    assert_select "button.nerv-add-button i.fa-solid.fa-plus[aria-hidden='true']"
+    assert_select "button.nerv-add-button[aria-label*='Inception']"
+    assert_equal "", css_select("button.nerv-add-button").first.text.strip
+  end
 end

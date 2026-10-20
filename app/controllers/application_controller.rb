@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) || recommendations_path
+  end
+
   def skip_authorization_check?
     devise_controller? || action_name == "index"
   end

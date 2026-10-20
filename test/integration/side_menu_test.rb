@@ -110,4 +110,11 @@ class SideMenuTest < ActionDispatch::IntegrationTest
     get entries_path
     assert_redirected_to new_user_session_path
   end
+  test "the menu button is a Font Awesome icon with an accessible name" do
+    sign_in users(:one)
+    get entries_path
+
+    assert_select "header button[aria-controls='side-menu'][aria-label] i.fa-solid.fa-bars[aria-hidden='true']"
+    assert_select ".nerv-burger", count: 0
+  end
 end

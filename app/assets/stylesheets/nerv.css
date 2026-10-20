@@ -486,7 +486,7 @@ input[type="text"], input[type="email"], input[type="password"], input[type="sea
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   line-height: 1;
   background: rgba(0, 0, 0, 0.8);
 }
@@ -631,15 +631,9 @@ label .nerv-hint { margin-left: 0.4rem; }
   width: 2.5rem;
   height: 2.5rem;
   padding: 0;
+  font-size: 1.25rem;
 }
-.nerv-burger,
-.nerv-burger::before,
-.nerv-burger::after { display: block; width: 1.25rem; height: 2px; background: currentColor; }
-.nerv-burger { position: relative; }
-.nerv-burger::before,
-.nerv-burger::after { content: ""; position: absolute; left: 0; }
-.nerv-burger::before { top: -6px; }
-.nerv-burger::after { top: 6px; }
+
 .nerv-side [data-controller="confirm-modal"] { margin: 0; }
 .nerv-side .nerv-modal button { width: auto; padding: 0.4rem 0.8rem; }
 .nerv-side .nerv-modal .nerv-panel { text-align: left; }
