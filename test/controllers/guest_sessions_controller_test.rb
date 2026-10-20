@@ -9,7 +9,7 @@ class GuestSessionsControllerTest < ActionDispatch::IntegrationTest
 
   test "guest login signs in the guest user and redirects to root" do
     post guest_login_url
-    assert_redirected_to root_url
+    assert_redirected_to recommendations_url
     follow_redirect!
     assert_response :success
   end
