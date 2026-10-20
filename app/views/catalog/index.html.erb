@@ -23,32 +23,7 @@
       <%= render partial: "catalog/item", collection: @result.items, as: :item %>
     </div>
 
-    <dialog class="nerv-modal" data-add-to-playlist-target="dialog"
-            data-action="click->add-to-playlist#closeOnBackdrop">
-      <div class="nerv-panel">
-        <h2><%= t("catalog.add_to_playlist") %></h2>
-        <p class="nerv-modal-title" data-add-to-playlist-target="title"></p>
-
-        <%= form_with url: catalog_path, method: :post, data: { add_to_playlist_target: "form" } do %>
-          <%= label_tag :playlist_id, t("catalog.modal.playlist") %>
-          <%= select_tag :playlist_id,
-                options_from_collection_for_select(@playlists, :id, :name) +
-                tag.option(t("catalog.modal.new_playlist"), value: "new"),
-                data: { add_to_playlist_target: "select", action: "change->add-to-playlist#toggle" } %>
-
-          <div data-add-to-playlist-target="newField" hidden>
-            <%= label_tag :new_playlist_name, t("catalog.modal.new_playlist_name") %>
-            <%= text_field_tag :new_playlist_name, nil, maxlength: 60, autocomplete: "off", disabled: true,
-                  data: { add_to_playlist_target: "newName" } %>
-          </div>
-
-          <div class="nerv-actions">
-            <%= submit_tag "[ #{t("catalog.modal.add")} ]", name: nil %>
-            <button type="button" data-action="add-to-playlist#close">[ <%= t("actions.cancel") %> ]</button>
-          </div>
-        <% end %>
-      </div>
-    </dialog>
+    <%= render "catalog/playlist_modal", playlists: @playlists %>
   </div>
 
   <nav class="nerv-pagination" aria-label="<%= t("catalog.pagination") %>">

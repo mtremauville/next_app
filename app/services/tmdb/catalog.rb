@@ -16,7 +16,9 @@ module Tmdb
     def search(query, media_type, page: 1)
       fetch_page("/search/#{media_type}", media_type, page: page, query: query)
     end
-
+    def discover(media_type, filters = {}, page: 1)
+      fetch_page("/discover/#{media_type}", media_type, **filters, page: page)
+    end
     private
 
     def fetch_page(path, media_type, **params)
