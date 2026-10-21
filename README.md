@@ -109,5 +109,5 @@ Data and posters provided by [TMDB](https://www.themoviedb.org). This product us
 ## About
 
 I'm Mickael, a junior developer (frontend or fullstack Rails) trained at the Le Wagon bootcamp. Next is my portfolio project: I'm looking for a role where I can put it to work.
-[LinkedIn](https://www.linkedin.com/in/mickaeltremauville) · [Blog](https://tremic.fr) · mickael.tremauville@gmail.com
+[LinkedIn](https://www.linkedin.com/in/mickael-tremauville) · [Blog](https://tremic.fr) · mickael.tremauville@gmail.com
 Icons: [Font Awesome Free](https://fontawesome.com) (CC BY 4.0 license).
